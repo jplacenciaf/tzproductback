@@ -51,7 +51,7 @@ const getProductById = (req, res) => {
 
 const createProduct = (req, res) => {
   const { name, description, price } = req.body;
-  fs.readFileSync(archivo, 'utf8', (err, data) => {
+  fs.readFile(archivo, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Error al leer los productos' });
@@ -65,7 +65,7 @@ const createProduct = (req, res) => {
       };
       products.push(newProduct);
       const updatedData = { products };
-      fs.writeFileSync(archivo, JSON.stringify(updatedData), (err) => {
+      fs.writeFile(archivo, JSON.stringify(updatedData), (err) => {
         if (err) {
           console.error(err);
           res.status(500).json({ error: 'Error al guardar el producto' });
@@ -80,7 +80,7 @@ const createProduct = (req, res) => {
 const updateProduct = (req, res) => {
   const productId = req.params.id;
   const { name, description, price } = req.body;
-  fs.readFileSync(archivo, 'utf8', (err, data) => {
+  fs.readFile(archivo, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Error al leer los productos' });
@@ -92,7 +92,7 @@ const updateProduct = (req, res) => {
         product.description = description || product.description;
         product.price = price || product.price;
         const updatedData = { products };
-        fs.writeFileSync(archivo, JSON.stringify(updatedData), (err) => {
+        fs.writeFile(archivo, JSON.stringify(updatedData), (err) => {
           if (err) {
             console.error(err);
             res.status(500).json({ error: 'Error al guardar el producto' });
