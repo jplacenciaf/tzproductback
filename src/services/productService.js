@@ -12,10 +12,10 @@ const generateProductId = () => {
 const getAllProducts = (req, res) => {
 
   // Verificar si los productos están en la caché
-  const cachedProducts = cache.getCacheValue('products');
-  if (cachedProducts) {
-    return res.json(cachedProducts);
-  }
+  // const cachedProducts = cache.getCacheValue('products');
+  // if (cachedProducts) {
+  //   return res.json(cachedProducts);
+  // }
 
   fs.readFile(archivo, 'utf8', (err, data) => {
     if (err) {
