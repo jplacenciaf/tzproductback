@@ -51,7 +51,7 @@ const getProductById = (req, res) => {
 
 const createProduct = (req, res) => {
   const { name, description, price } = req.body;
-  fs.readFile(archivo, 'utf8', (err, data) => {
+  fs.readFileSync(archivo, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Error al leer los productos' });
@@ -80,7 +80,7 @@ const createProduct = (req, res) => {
 const updateProduct = (req, res) => {
   const productId = req.params.id;
   const { name, description, price } = req.body;
-  fs.readFile(archivo, 'utf8', (err, data) => {
+  fs.readFileSync(archivo, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Error al leer los productos' });
