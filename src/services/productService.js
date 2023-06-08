@@ -65,7 +65,7 @@ const createProduct = (req, res) => {
       };
       products.push(newProduct);
       const updatedData = { products };
-      fs.writeFile(archivo, JSON.stringify(updatedData), (err) => {
+      fs.writeFileSync(archivo, JSON.stringify(updatedData), (err) => {
         if (err) {
           console.error(err);
           res.status(500).json({ error: 'Error al guardar el producto' });
@@ -92,7 +92,7 @@ const updateProduct = (req, res) => {
         product.description = description || product.description;
         product.price = price || product.price;
         const updatedData = { products };
-        fs.writeFile(archivo, JSON.stringify(updatedData), (err) => {
+        fs.writeFileSync(archivo, JSON.stringify(updatedData), (err) => {
           if (err) {
             console.error(err);
             res.status(500).json({ error: 'Error al guardar el producto' });
